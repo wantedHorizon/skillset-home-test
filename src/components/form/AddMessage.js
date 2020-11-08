@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Form, Input, TextArea, Button } from 'semantic-ui-react'
 const AddMessage = props => {
+    const [newEmail, setNewEmail] = useState('');
+    const [newMessage, setNewMessage] = useState('');
     return (
         <div className='AddMessage'>
             <Form>
