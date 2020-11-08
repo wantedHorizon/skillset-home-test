@@ -1,21 +1,32 @@
 import React, { useState } from 'react';
 import { Form, Input, TextArea, Button } from 'semantic-ui-react'
-const AddMessage = props => {
+const AddMessage = ({onSubmitCommentHandler}) => {
     const [newEmail, setNewEmail] = useState('');
     const [newMessage, setNewMessage] = useState('');
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const data = {
+            msg: newMessage,
+            autour: newEmail
+        }
+        const success = onSubmitCommentHandler(data);
+        if(success){
+            setNewEmail('');
+            setNewMessage('');
+            alert("message added thanks");
+        }
+        console.log("submited");
+    }
     return (
-        <div className='AddMessage'>
-            <Form>
+        <div className='AddMessage' style={{textAlign:'right', backgroundColor: '#c9c9c9', padding: '20px'}}>
+            <Form onSubmit={onSubmit}>
                 <Form.Field
                     id='form-input-control-error-email'
                     control={Input}
                     placeholder='Email'
                     value={newEmail}
                     onChange={(e, { value }) => setNewEmail(value)}
-                // error={{
-                //     content: 'Please enter a valid email address',
-                //     pointing: 'below',
-                // }}
                 />
 
 

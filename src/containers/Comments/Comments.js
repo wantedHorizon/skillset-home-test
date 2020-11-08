@@ -1,29 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import Comment from '../components/form/Comment';
+import Comment from '../../components/form/Comment';
 import { Comment as CommentSemanticUI, Input } from 'semantic-ui-react';
-import commentsAPI from '../api/comments-api';
-const Comments = props => {
+const Comments = ({comments=[]}) => {
 
-    const [comments, setComments] = useState([]);
     const [displayComments, setDisplayComments] = useState([]);
-
+    
     const [search, setSearch] = useState('');
 
-    //get comments
-    useEffect(() => {
-
-        const fetchData = async () => {
-            try {
-                const data = await commentsAPI.get('all');
-                setComments(data.data);
-
-            } catch (e) {
-                console.error(e);
-            }
-        }
-
-        fetchData();
-    }, [])
 
     //search 
 
@@ -40,13 +23,14 @@ const Comments = props => {
         }
     }, [search, comments])
     return (
-        <div className='Comments'>
+        <div className='Comments' style={{padding:'20px', background:'white'}}>
             <CommentSemanticUI.Group>
                 <Input
                     icon='search' 
                     placeholder='Search...'
                     onChange={(e, { value }) => setSearch(value)}
                     value={search}
+                    style={{width: '100%'}}
                 />
                 {displayComments.map(c => <Comment key={c.id} autour={c.autour} msg={c.msg} imgSrc={c.avatar} />)}
 

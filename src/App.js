@@ -1,5 +1,5 @@
 import './App.css';
-import FormContainer from './containers/FormContainer';
+import FormContainer from './containers/FormContainer/FormContainer';
 
 function App() {
   return (
