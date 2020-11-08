@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Comment from '../../components/form/Comment';
 import { Comment as CommentSemanticUI, Input } from 'semantic-ui-react';
+
 const Comments = ({comments=[]}) => {
 
     const [displayComments, setDisplayComments] = useState([]);
