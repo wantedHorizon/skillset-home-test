@@ -14,20 +14,22 @@ const AddMessage = ({onSubmitCommentHandler}) => {
             return;
         }
 
-        if(validator.isJSON(newMessage)  ){
-            console.log(validator.unescape(newMessage));
+        if(validator.isJSON(newMessage)|| newMessage.length<5  ){
+            setError('invalid Message');
+            return;
             
         }
 
         
         const data = {
             msg: newMessage,
-            autour: newEmail
+            autour: newEmail.toLocaleLowerCase()
         }
         const success = onSubmitCommentHandler(data);
         if(success){
             setNewEmail('');
             setNewMessage('');
+            setError('');
             // alert("message added thanks");
         }
         console.log("submited");
