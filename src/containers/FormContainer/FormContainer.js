@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Input, TextArea, Button } from 'semantic-ui-react'
 import AddMessage from '../../components/form/AddMessage';
 import Comments from '../Comments/Comments';
 import commentsAPI from '../../api/comments-api';
